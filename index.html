@@ -190,7 +190,6 @@ a{color:inherit;text-decoration:none}
 <div class="tabnav">
   <button class="tabbtn active" data-tab="plan">旅程</button>
   <button class="tabbtn" data-tab="booking">予約</button>
-  <button class="tabbtn" data-tab="cost">コスト</button>
 </div>
 
 <div id="panel-plan" class="tabpanel active">
@@ -418,9 +417,11 @@ a{color:inherit;text-decoration:none}
   </div>
 </div>
 
+<div style="text-align:center;margin:26px 0 6px"><a id="go-cost" href="#" style="display:inline-block;font-size:13px;color:var(--muted);border:1px solid var(--rule);background:var(--card);border-radius:20px;padding:8px 18px">コスト試算を見る →</a></div>
 </div><!-- /panel-booking -->
 
 <div id="panel-cost" class="tabpanel">
+<a id="go-booking" href="#" style="display:inline-block;font-size:13px;color:var(--ocean);margin:4px 0 10px">← 予約に戻る</a>
 
 <div class="cost-sec"><div class="cost-h">交通費<span class="cost-sub">確定 ¥84,900</span></div><div class="cost-scroll"><table class="cost-table"><tr><th>項目</th><th class="cost-num">単価</th><th class="cost-num">数量</th><th class="cost-num">小計（2名）</th><th>備考</th></tr><tr><td>往路 航空券（ピーチ MM213 / KIX→OKA）</td><td class="cost-num">¥14,940</td><td class="cost-num">2名分</td><td class="cost-num">¥29,880</td><td class="cost-note">予約番号 P44AXQ・スタンダード運賃</td></tr><tr><td>復路 航空券（スカイマーク SKY512 / OKA→HND）</td><td class="cost-num">¥15,890</td><td class="cost-num">2名分</td><td class="cost-num">¥31,780</td><td class="cost-note">予約番号 0826・いま得</td></tr><tr><td>高速道路（Day1 沖縄道 那覇IC→許田IC）</td><td class="cost-num">¥1,040</td><td class="cost-num">1回</td><td class="cost-num">¥1,040</td><td class="cost-note">ETC料金。現金は¥1,610</td></tr><tr><td>高速道路（Day4 うるま→那覇）</td><td class="cost-num">¥700</td><td class="cost-num">1回</td><td class="cost-num">¥700</td><td class="cost-note">ETC料金</td></tr><tr><td>レンタカー（10/12〜17）</td><td class="cost-num"></td><td class="cost-num">1台</td><td class="cost-num">¥21,500</td><td class="cost-note">コンパクト・免責補償・NOC込（OKINAWAヴァケーション 那覇空港店）</td></tr></table></div></div>
 <div class="cost-sec"><div class="cost-h">宿泊費（2名・全6泊）<span class="cost-sub">確定 ¥188,996</span></div><div class="cost-scroll"><table class="cost-table"><tr><th>項目</th><th class="cost-num">単価</th><th class="cost-num">数量</th><th class="cost-num">小計（2名）</th><th>備考</th></tr><tr><td>Day1 Bagus（古宇利島・1棟貸し）</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥32,000</td><td class="cost-note">大人2名・Booking.com</td></tr><tr><td>Day2 ホテル日航アリビラ（読谷）</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥49,320</td><td class="cost-note">夕朝食付・One Harmony10%OFF適用後</td></tr><tr><td>Day3 ラ・ジェント沖縄北谷</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥16,884</td><td class="cost-note">大人2名</td></tr><tr><td>Day4 アベスト那覇国際通り</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥15,552</td><td class="cost-note">大人2名</td></tr><tr><td>Day5〜6 琉球温泉 瀬長島ホテル</td><td class="cost-num"></td><td class="cost-num">2泊</td><td class="cost-num">¥75,240</td><td class="cost-note">素泊（早割75）・クーポン適用後</td></tr></table></div></div>
@@ -440,7 +441,7 @@ a{color:inherit;text-decoration:none}
 </div>
 <script>
 (function(){
-  var tabs=['plan','booking','cost'];
+  var tabs=['plan','booking'];
   var tabnav=document.querySelector('.tabnav');
   function setNavH(){document.documentElement.style.setProperty('--tabnav-h',(tabnav?tabnav.offsetHeight:56)+'px');}
   setNavH(); window.addEventListener('resize',setNavH);
@@ -448,7 +449,8 @@ a{color:inherit;text-decoration:none}
   function activate(t){
     var from=currentIndex(), to=tabs.indexOf(t);
     var dir = to>from ? 'anim-fwd' : (to<from ? 'anim-back' : '');
-    document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-tab')===t);});
+    var navTab=(t==='cost')?'booking':t;
+    document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-tab')===navTab);});
     document.querySelectorAll('.tabpanel').forEach(function(p){
       var on=p.id==='panel-'+t;
       p.classList.toggle('active', on);
@@ -459,6 +461,8 @@ a{color:inherit;text-decoration:none}
   document.querySelectorAll('.tabbtn').forEach(function(btn){
     btn.addEventListener('click',function(){activate(btn.getAttribute('data-tab'));});
   });
+  var gc=document.getElementById('go-cost'); if(gc)gc.addEventListener('click',function(e){e.preventDefault();activate('cost');});
+  var gb=document.getElementById('go-booking'); if(gb)gb.addEventListener('click',function(e){e.preventDefault();activate('booking');});
   var x0=null,y0=null,main=document.querySelector('.main');
   main.addEventListener('touchstart',function(e){
     if(e.target.closest('.meal-cards,.cost-scroll,.map-wrap')){x0=null;return;}
