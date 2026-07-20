@@ -103,8 +103,8 @@ a{color:inherit;text-decoration:none}
 .opt-link:hover{background:#EAF5FB}
 
 /* COMPACT OGP MEAL CARDS */
-.meal-cards{display:flex;flex-direction:row;gap:7px;margin-top:8px}
-.meal-card{display:flex;flex:1;min-width:0;border:1px solid #D0E8F2;border-radius:6px;overflow:hidden;background:var(--card);transition:box-shadow .12s}
+.meal-cards{display:flex;flex-direction:row;flex-wrap:nowrap;gap:8px;margin-top:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;scroll-snap-type:x proximity}
+.meal-card{display:flex;flex:0 0 240px;width:240px;min-width:0;border:1px solid #D0E8F2;border-radius:6px;overflow:hidden;background:var(--card);transition:box-shadow .12s;scroll-snap-align:start}
 .meal-card:hover{box-shadow:0 2px 8px rgba(0,0,0,.08)}
 .mc-img{width:64px;flex-shrink:0;overflow:hidden;background:#D8EAF2}
 .mc-img img{width:100%;height:100%;object-fit:cover;display:block}
@@ -190,7 +190,6 @@ a{color:inherit;text-decoration:none}
 
 <div class="tabnav">
   <button class="tabbtn active" data-tab="plan">旅程</button>
-  <button class="tabbtn" data-tab="route">ルート</button>
   <button class="tabbtn" data-tab="booking">予約マップ</button>
   <button class="tabbtn" data-tab="cost">コスト試算</button>
 </div>
@@ -205,6 +204,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-cul">文化</span><span class="tag t-drv">ドライブ</span><span class="tag t-food">グルメ</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E6%B2%96%E7%B8%84%E7%9C%8C%E9%82%A3%E8%A6%87%E5%B8%82%E9%87%91%E5%9F%8E2-12-6&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91%E5%8F%A4%E5%AE%87%E5%88%A92214&mode=driving&waypoints=%E9%A6%96%E9%87%8C%E5%9F%8E%E5%85%AC%E5%9C%92" loading="lazy" title="Day1 ルート" allowfullscreen></iframe></div>
     <ul class="timeline">
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">08:00</div><div class="tl-title">関西空港 到着</div><div class="tl-note">ピーチは保安検査締め切りが出発45分前。余裕を持って第2ターミナルへ</div></div></li>
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">09:30</div><div class="tl-title">関西空港 出発</div><div class="tl-note">ピーチ MM213 ・ KIX → OKA</div></div></li>
@@ -230,6 +230,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-sea">海</span><span class="tag t-nat">自然</span><span class="tag t-cul">文化</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6&destination=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E3%82%A2%E3%83%AA%E3%83%93%E3%83%A9&mode=driving&waypoints=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" loading="lazy" title="Day2 ルート" allowfullscreen></iframe></div>
     <ul class="timeline">
       <li class="tl-item"><div class="tl-dot tl-star"></div><div class="tl-content"><div class="tl-time">09:00</div><div class="tl-title">古宇利島・古宇利大橋</div><div class="tl-note">エメラルドグリーンの海に架かる橋を渡って島へ。ティーヌ浜（ハートロック）も散策</div><a class="spot-card" href="https://www.nakijin.jp/" target="_blank" rel="noopener"><img src="https://okinawa-labo.com/wp-content/uploads/2026/02/heartrock-access-1.jpg" alt="古宇利大橋・古宇利島" class="sc-img" loading="lazy"><div class="sc-footer">古宇利島観光情報 →</div></a></div></li>
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">11:00</div><div class="tl-title">備瀬フクギ並木</div><div class="tl-note">琉球石灰岩の道と緑のトンネル。水牛車でのんびりも良い</div></div></li>
@@ -252,6 +253,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-drv">ドライブ</span><span class="tag t-cul">文化</span><span class="tag t-food">グルメ</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E3%82%A2%E3%83%AA%E3%83%93%E3%83%A9&destination=%E3%83%A9%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%BB%E3%83%9B%E3%83%86%E3%83%AB%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7&mode=driving&waypoints=%E7%90%89%E7%90%83%E6%9D%91%7CA%26W%E7%89%A7%E6%B8%AF%E5%BA%97" loading="lazy" title="Day3 ルート" allowfullscreen></iframe></div>
     <ul class="timeline">
       <li class="tl-item"><div class="tl-dot tl-star"></div><div class="tl-content"><div class="tl-time">10:00</div><div class="tl-title">琉球村</div><div class="tl-note">古民家を移築した琉球文化のテーマパーク。エイサーや伝統芸能、体験メニューも充実（所要 1.5〜2h）</div><a class="spot-card" href="https://www.ryukyumura.co.jp/" target="_blank" rel="noopener"><img src="https://travel.rakuten.co.jp/mytrip/sites/mytrip/files/styles/main_image/public/2024-08/ryukyumura-02893.jpg" alt="琉球村" class="sc-img" loading="lazy"><div class="sc-footer">琉球村 公式 →</div></a></div></li>
       <li class="tl-item"><div class="tl-dot tl-opt"></div><div class="tl-content"><div class="opt-card"><div class="opt-head"><span class="opt-badge">オプション</span><span class="opt-title">やちむんの里</span></div><div class="opt-note">陶芸の里で器探し。読谷村内、琉球村から近い</div><div class="opt-links"><a class="opt-link" href="https://oki-raku.net/blog/yachimunnosato/" target="_blank" rel="noopener">やちむんの里 →</a></div></div></div></li>
@@ -274,6 +276,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-drv">ドライブ</span><span class="tag t-sea">海</span><span class="tag t-cul">文化</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E3%83%A9%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%BB%E3%83%9B%E3%83%86%E3%83%AB%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7&destination=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%99%E3%82%B9%E3%83%88%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&mode=driving&waypoints=%E5%8B%9D%E9%80%A3%E5%9F%8E%E8%B7%A1%7C%E6%B5%B7%E4%B8%AD%E9%81%93%E8%B7%AF%7C%E6%B5%9C%E6%AF%94%E5%98%89%E5%B3%B6" loading="lazy" title="Day4 ルート" allowfullscreen></iframe></div>
     <div class="note-box" style="margin-bottom:10px">北谷から東へ約40分。<strong>4.7kmの海の上を渡る「海中道路」</strong>で、平安座・宮城・伊計・浜比嘉の4島へ。城やビーチとは違う、他の日と被らない“離島ドライブ”の一日。</div>
     <ul class="timeline">
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">09:30</div><div class="tl-title">北谷を出発 → 東海岸へ</div><div class="tl-note">沖縄市を抜けてうるま市の与勝半島へ（約40分）</div></div></li>
@@ -301,6 +304,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-sea">海</span><span class="tag t-nat">自然</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%99%E3%82%B9%E3%83%88%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&destination=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&mode=driving&waypoints=%E4%B8%89%E9%87%8D%E5%9F%8E%E6%B8%AF%7C%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" loading="lazy" title="Day5 ルート" allowfullscreen></iframe></div>
     <div class="choice-box">
       <div class="choice-label">予約確定 ✅</div>
       <div class="tour-cards">
@@ -329,6 +333,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-drv">ドライブ</span><span class="tag t-nat">自然</span><span class="tag t-cul">文化</span><span class="tag t-food">グルメ</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E9%82%A3%E8%A6%87%E5%B8%82%E9%87%91%E5%9F%8E2-12-6&mode=driving&waypoints=%E3%83%8B%E3%83%A9%E3%82%A4%E3%82%AB%E3%83%8A%E3%82%A4%E6%A9%8B%7C%E6%96%8E%E5%A0%B4%E5%BE%A1%E5%B6%BD%7C%E3%82%AC%E3%83%B3%E3%82%AC%E3%83%A9%E3%83%BC%E3%81%AE%E8%B0%B7%7C%E7%9F%A5%E5%BF%B5%E5%B2%AC%E5%85%AC%E5%9C%92" loading="lazy" title="Day6 ルート" allowfullscreen></iframe></div>
     <div class="note-box" style="margin-bottom:10px"><strong>ガンガラーの谷は要事前予約。</strong>ガイドツアー（約1時間20分）のみ入場可。旅行前にオンライン予約を。</div>
     <ul class="timeline">
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">09:00</div><div class="tl-title">ニライカナイ橋</div><div class="tl-note">朝の光が美しい。展望台から海と橋を一望してから出発</div><a class="spot-card" href="https://maps.google.com/maps?q=ニライカナイ橋+南城市" target="_blank" rel="noopener"><img src="https://okinawa-labo.com/wp-content/uploads/2015/05/niraikanai-bridge-image4.jpg" alt="ニライカナイ橋" class="sc-img" loading="lazy"><div class="sc-footer">地図で見る →</div></a></div></li>
@@ -355,6 +360,7 @@ a{color:inherit;text-decoration:none}
     <div class="day-tags"><span class="tag t-drv">移動</span></div>
   </div>
   <div class="day-body">
+    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:12px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&destination=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF&mode=driving" loading="lazy" title="Day7 ルート" allowfullscreen></iframe></div>
     <ul class="timeline">
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">07:00</div><div class="tl-title">ホテル出発（シャトル／タクシー）</div><div class="tl-note">レンタカーは前日返却済み。瀬長島から空港までシャトルまたはタクシーで約15分</div></div></li>
       <li class="tl-item"><div class="tl-dot"></div><div class="tl-content"><div class="tl-time">07:30</div><div class="tl-title">那覇空港 到着・チェックイン</div></div></li>
@@ -366,86 +372,6 @@ a{color:inherit;text-decoration:none}
 
 </div><!-- /panel-plan -->
 
-<div id="panel-route" class="tabpanel">
-<div class="cost-intro">各日の移動ルート（線付き地図＝Googleマップ）。ボタンでルート案内を開けます。<strong>レンタカーは店舗（那覇市金城2-12-6）へ来店して貸出・返却</strong>（空港カウンター・送迎なし／タクシー来店キャッシュバック〜¥1,000）。</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>1</div>
-    <div><div class="day-date">10月12日（月）</div><div class="day-sub">店舗（金城で貸出）→ 首里城 → 古宇利島（Bagus）</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E6%B2%96%E7%B8%84%E7%9C%8C%E9%82%A3%E8%A6%87%E5%B8%82%E9%87%91%E5%9F%8E2-12-6&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91%E5%8F%A4%E5%AE%87%E5%88%A92214&mode=driving&waypoints=%E9%A6%96%E9%87%8C%E5%9F%8E%E5%85%AC%E5%9C%92" loading="lazy" title="Day1 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 沖縄県那覇市金城2-12-6 → 首里城公園 → 沖縄県今帰仁村古宇利2214</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E6%B2%96%E7%B8%84%E7%9C%8C%E9%82%A3%E8%A6%87%E5%B8%82%E9%87%91%E5%9F%8E2-12-6&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E4%BB%8A%E5%B8%B0%E4%BB%81%E6%9D%91%E5%8F%A4%E5%AE%87%E5%88%A92214&waypoints=%E9%A6%96%E9%87%8C%E5%9F%8E%E5%85%AC%E5%9C%92&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>2</div>
-    <div><div class="day-date">10月13日（火）</div><div class="day-sub">古宇利島 → 美ら海水族館 → 日航アリビラ（読谷）</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6&destination=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E3%82%A2%E3%83%AA%E3%83%93%E3%83%A9&mode=driving&waypoints=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8" loading="lazy" title="Day2 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 古宇利島 → 沖縄美ら海水族館 → ホテル日航アリビラ</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E5%8F%A4%E5%AE%87%E5%88%A9%E5%B3%B6&destination=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E3%82%A2%E3%83%AA%E3%83%93%E3%83%A9&waypoints=%E6%B2%96%E7%B8%84%E7%BE%8E%E3%82%89%E6%B5%B7%E6%B0%B4%E6%97%8F%E9%A4%A8&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>3</div>
-    <div><div class="day-date">10月14日（水）</div><div class="day-sub">日航アリビラ → 琉球村 → A&W牧港 → ラ・ジェント北谷</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E3%82%A2%E3%83%AA%E3%83%93%E3%83%A9&destination=%E3%83%A9%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%BB%E3%83%9B%E3%83%86%E3%83%AB%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7&mode=driving&waypoints=%E7%90%89%E7%90%83%E6%9D%91%7CA%26W%E7%89%A7%E6%B8%AF%E5%BA%97" loading="lazy" title="Day3 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 ホテル日航アリビラ → 琉球村 → A&W牧港店 → ラ・ジェント・ホテル沖縄北谷</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E3%83%9B%E3%83%86%E3%83%AB%E6%97%A5%E8%88%AA%E3%82%A2%E3%83%AA%E3%83%93%E3%83%A9&destination=%E3%83%A9%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%BB%E3%83%9B%E3%83%86%E3%83%AB%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7&waypoints=%E7%90%89%E7%90%83%E6%9D%91%7CA%26W%E7%89%A7%E6%B8%AF%E5%BA%97&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>4</div>
-    <div><div class="day-date">10月15日（木）</div><div class="day-sub">北谷 → 勝連城跡 → 海中道路 → 浜比嘉島 → 那覇（アベスト）</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E3%83%A9%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%BB%E3%83%9B%E3%83%86%E3%83%AB%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7&destination=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%99%E3%82%B9%E3%83%88%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&mode=driving&waypoints=%E5%8B%9D%E9%80%A3%E5%9F%8E%E8%B7%A1%7C%E6%B5%B7%E4%B8%AD%E9%81%93%E8%B7%AF%7C%E6%B5%9C%E6%AF%94%E5%98%89%E5%B3%B6" loading="lazy" title="Day4 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 ラ・ジェント・ホテル沖縄北谷 → 勝連城跡 → 海中道路 → 浜比嘉島 → ホテルアベスト那覇国際通り</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E3%83%A9%E3%83%BB%E3%82%B8%E3%82%A7%E3%83%B3%E3%83%88%E3%83%BB%E3%83%9B%E3%83%86%E3%83%AB%E6%B2%96%E7%B8%84%E5%8C%97%E8%B0%B7&destination=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%99%E3%82%B9%E3%83%88%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&waypoints=%E5%8B%9D%E9%80%A3%E5%9F%8E%E8%B7%A1%7C%E6%B5%B7%E4%B8%AD%E9%81%93%E8%B7%AF%7C%E6%B5%9C%E6%AF%94%E5%98%89%E5%B3%B6&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>5</div>
-    <div><div class="day-date">10月16日（金）</div><div class="day-sub">那覇 → 三重城港（ダイビング）→ 国際通り → 瀬長島</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%99%E3%82%B9%E3%83%88%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&destination=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&mode=driving&waypoints=%E4%B8%89%E9%87%8D%E5%9F%8E%E6%B8%AF%7C%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A" loading="lazy" title="Day5 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 ホテルアベスト那覇国際通り → 三重城港 → 那覇 国際通り → 琉球温泉 瀬長島ホテル</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E3%83%9B%E3%83%86%E3%83%AB%E3%82%A2%E3%83%99%E3%82%B9%E3%83%88%E9%82%A3%E8%A6%87%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&destination=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&waypoints=%E4%B8%89%E9%87%8D%E5%9F%8E%E6%B8%AF%7C%E9%82%A3%E8%A6%87%20%E5%9B%BD%E9%9A%9B%E9%80%9A%E3%82%8A&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>6</div>
-    <div><div class="day-date">10月17日（土）</div><div class="day-sub">瀬長島 → ニライカナイ橋 → 斎場御嶽 → ガンガラー → 知念岬 → 店舗で返却（金城）→（タクシーで瀬長島）</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E9%82%A3%E8%A6%87%E5%B8%82%E9%87%91%E5%9F%8E2-12-6&mode=driving&waypoints=%E3%83%8B%E3%83%A9%E3%82%A4%E3%82%AB%E3%83%8A%E3%82%A4%E6%A9%8B%7C%E6%96%8E%E5%A0%B4%E5%BE%A1%E5%B6%BD%7C%E3%82%AC%E3%83%B3%E3%82%AC%E3%83%A9%E3%83%BC%E3%81%AE%E8%B0%B7%7C%E7%9F%A5%E5%BF%B5%E5%B2%AC%E5%85%AC%E5%9C%92" loading="lazy" title="Day6 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 琉球温泉 瀬長島ホテル → ニライカナイ橋 → 斎場御嶽 → ガンガラーの谷 → 知念岬公園 → 沖縄県那覇市金城2-12-6</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&destination=%E6%B2%96%E7%B8%84%E7%9C%8C%E9%82%A3%E8%A6%87%E5%B8%82%E9%87%91%E5%9F%8E2-12-6&waypoints=%E3%83%8B%E3%83%A9%E3%82%A4%E3%82%AB%E3%83%8A%E3%82%A4%E6%A9%8B%7C%E6%96%8E%E5%A0%B4%E5%BE%A1%E5%B6%BD%7C%E3%82%AC%E3%83%B3%E3%82%AC%E3%83%A9%E3%83%BC%E3%81%AE%E8%B0%B7%7C%E7%9F%A5%E5%BF%B5%E5%B2%AC%E5%85%AC%E5%9C%92&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-<div class="day-card">
-  <div class="day-header">
-    <div class="day-num">DAY<br>7</div>
-    <div><div class="day-date">10月18日（日）</div><div class="day-sub">瀬長島 → 那覇空港（レンタカー無し・シャトル/タクシー）</div></div>
-  </div>
-  <div class="day-body">
-    <div class="map-wrap" style="aspect-ratio:16/9;margin-bottom:10px"><iframe src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyAN5709BCaspcAmt96hjDEXNCBJnDnU29I&origin=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&destination=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF&mode=driving" loading="lazy" title="Day7 ルート" allowfullscreen></iframe></div>
-    <div style="font-size:12px;color:var(--muted);line-height:1.6;margin-bottom:8px">🚗 琉球温泉 瀬長島ホテル → 那覇空港</div>
-    <a class="tc-link" style="display:inline-block" href="https://www.google.com/maps/dir/?api=1&origin=%E7%90%89%E7%90%83%E6%B8%A9%E6%B3%89%20%E7%80%AC%E9%95%B7%E5%B3%B6%E3%83%9B%E3%83%86%E3%83%AB&destination=%E9%82%A3%E8%A6%87%E7%A9%BA%E6%B8%AF&travelmode=driving" target="_blank" rel="noopener">Googleマップでルートを開く →</a>
-  </div>
-</div>
-</div><!-- /panel-route -->
 
 <div id="panel-booking" class="tabpanel">
 <div class="accom-section">
