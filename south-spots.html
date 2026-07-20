@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>沖縄南部 観光スポットガイド</title>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:        #E9F2EC;
+  --surface:   #FFFFFF;
+  --deep:      #0E2A1F;
+  --green:     #2C7A56;
+  --green-mid: #4A9E78;
+  --muted:     #6B8C7A;
+  --rule:      #C8DACE;
+  --coral:     #C96030;
+
+  /* category accent colors */
+  --c-history: #8B6610;
+  --c-scenery: #1B5A8C;
+  --c-nature:  #2C7A56;
+  --c-exp:     #7A3568;
+  --c-food:    #B35018;
+
+  --c-history-bg: #FEF8EC;
+  --c-scenery-bg: #EBF2FA;
+  --c-nature-bg:  #E8F2EC;
+  --c-exp-bg:     #F5EBF3;
+  --c-food-bg:    #FEF0E8;
+}
+
+body {
+  background: var(--bg);
+  color: var(--deep);
+  font-family: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "YuGothic", "Yu Gothic", system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+a:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+
+/* ─── HEADER ─── */
+.hd {
+  background: var(--deep);
+  color: #fff;
+  padding: 32px 24px 28px;
+}
+.hd-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.hd-left {}
+.hd-eye {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #7AB899;
+  margin-bottom: 6px;
+}
+.hd-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: normal;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+.hd-title em { font-style: normal; color: #7AB899; }
+.hd-meta {
+  font-size: 12px;
+  color: #7AB899;
+  margin-top: 8px;
+}
+.hd-count {
+  font-size: 42px;
+  font-family: Georgia, serif;
+  color: #3A6E55;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-align: right;
+  flex-shrink: 0;
+}
+.hd-count small {
+  font-size: 12px;
+  color: #5A8A72;
+  display: block;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* ─── LEGEND ─── */
+.legend {
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+}
+.legend-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 10px 24px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.legend-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+.legend-items {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--deep);
+}
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ─── MAIN ─── */
+.main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 60px;
+}
+
+/* ─── SECTION HEADER ─── */
+.sec-hd {
+  padding: 28px 0 14px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 14px;
+}
+.sec-hd h2 {
+  font-family: Georgia, serif;
+  font-size: 18px;
+  font-weight: normal;
+  color: var(--deep);
+}
+.sec-hd-note {
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ─── RECOMMEND STRIP ─── */
+.rec-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.rec-card {
+  background: var(--surface);
+  border-radius: 6px;
+  border: 1px solid var(--rule);
+  padding: 14px 16px;
+  position: relative;
+  border-left-width: 4px;
+  transition: box-shadow 0.15s;
+}
+.rec-card:hover { box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+.rec-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--coral);
+  background: #FEF0EA;
+  border: 1px solid #F5C4AC;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-weight: 700;
+}
+.rec-cat {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+.rec-name {
+  font-family: Georgia, serif;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 1.3;
+  margin-bottom: 6px;
+  text-wrap: balance;
+  padding-right: 52px;
+}
+.rec-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  margin-bottom: 10px;
+}
+.rec-links {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.btn-link {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid currentColor;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: background 0.12s;
+}
+.btn-link:hover { background: rgba(0,0,0,0.05); }
+.btn-map { color: var(--muted); }
+
+/* ─── ALL SPOTS GRID ─── */
+.spots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 10px;
+}
+.spot-card {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  border-left-width: 4px;
+  padding: 12px 14px;
+  transition: box-shadow 0.15s;
+}
+.spot-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+.spot-cat {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.spot-name {
+  font-family: Georgia, serif;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 1.3;
+  margin-bottom: 5px;
+  text-wrap: balance;
+}
+.spot-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.spot-links { display: flex; gap: 6px; flex-wrap: wrap; }
+
+/* ─── category color helpers ─── */
+.cat-history { border-left-color: var(--c-history); }
+.cat-history .rec-cat, .cat-history .spot-cat { color: var(--c-history); }
+
+.cat-scenery { border-left-color: var(--c-scenery); }
+.cat-scenery .rec-cat, .cat-scenery .spot-cat { color: var(--c-scenery); }
+
+.cat-nature  { border-left-color: var(--c-nature); }
+.cat-nature .rec-cat, .cat-nature .spot-cat { color: var(--c-nature); }
+
+.cat-exp     { border-left-color: var(--c-exp); }
+.cat-exp .rec-cat, .cat-exp .spot-cat { color: var(--c-exp); }
+
+.cat-food    { border-left-color: var(--c-food); }
+.cat-food .rec-cat, .cat-food .spot-cat { color: var(--c-food); }
+
+/* ─── NOTE CARD ─── */
+.note-card {
+  background: #EBF5F0;
+  border: 1px solid #B0D4BF;
+  border-left: 4px solid var(--green);
+  border-radius: 0 6px 6px 0;
+  padding: 10px 14px;
+  font-size: 12px;
+  color: #1A4A30;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+.note-card strong { font-weight: 700; }
+
+/* ─── MAP ─── */
+.map-wrap {
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+  aspect-ratio: 16 / 7;
+  background: #D8E8DD;
+}
+.map-wrap iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* ─── CALLOUT BANNER ─── */
+.callout {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+.callout strong { color: var(--deep); font-weight: 600; }
+
+@media (max-width: 540px) {
+  .rec-strip { grid-template-columns: 1fr; }
+  .spots-grid { grid-template-columns: 1fr; }
+  .hd-count { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rec-card, .spot-card, .btn-link { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hd">
+  <div class="hd-inner">
+    <div class="hd-left">
+      <div class="hd-eye">沖縄旅行 2026年10月 ・ 参考資料</div>
+      <h1 class="hd-title">沖縄南部<br><em>観光スポットガイド</em></h1>
+      <p class="hd-meta">南城市・糸満市・豊見城市・八重瀬町 周辺 ／ 15スポット</p>
+    </div>
+    <div class="hd-count">15<small>spots</small></div>
+  </div>
+</header>
+
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-inner">
+    <div class="legend-label">カテゴリ</div>
+    <div class="legend-items">
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--c-history)"></div>歴史
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--c-scenery)"></div>絶景
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--c-nature)"></div>自然
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--c-exp)"></div>体験
+      </div>
+      <div class="legend-item">
+        <div class="legend-swatch" style="background:var(--c-food)"></div>グルメ
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- 推薦スポット -->
+  <div class="sec-hd">
+    <h2>特に押さえたい</h2>
+    <div class="sec-hd-note">旅程に組み込む優先度が高いスポット</div>
+  </div>
+
+  <div class="note-card">
+    <strong>ガンガラーの谷は要事前予約。</strong>当日枠は埋まりやすいため、旅行前にオンライン予約しておくことを強く推奨。
+  </div>
+
+  <div class="rec-strip">
+
+    <!-- ニライカナイ橋 -->
+    <div class="rec-card cat-scenery">
+      <div class="rec-badge">必見</div>
+      <div class="rec-cat">絶景 ・ ドライブ</div>
+      <div class="rec-name">ニライカナイ橋</div>
+      <div class="rec-desc">南城市の海岸沿いを走る二連橋。展望台から橋と海が一望でき、朝の光が特に美しい。南部ドライブの起点として最適。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://osusowake.okinawa/niraikanaibridge" target="_blank" rel="noopener">観光情報</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=ニライカナイ橋+南城市" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 斎場御嶽 -->
+    <div class="rec-card cat-history">
+      <div class="rec-badge">世界遺産</div>
+      <div class="rec-cat">歴史 ・ 聖地</div>
+      <div class="rec-name">斎場御嶽（セーファーウタキ）</div>
+      <div class="rec-desc">琉球王国最高の聖地。荘厳な岩組みと亜熱帯の緑が作り出す神秘的な空間。ニライカナイ橋から車で数分。所要 約1時間。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://www.odnsym.com/isan/sefa.html" target="_blank" rel="noopener">公式情報</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=斎場御嶽+南城市" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 知念岬公園 -->
+    <div class="rec-card cat-scenery">
+      <div class="rec-badge">必見</div>
+      <div class="rec-cat">絶景 ・ 岬</div>
+      <div class="rec-name">知念岬公園</div>
+      <div class="rec-desc">三方を海に囲まれた岬。エメラルドからコバルトブルーのグラデーションが眼下に広がり、晴れた日は久高島まで見渡せる。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://activityjapan.com/feature/okinawa-south-sightseeing/" target="_blank" rel="noopener">観光情報</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=知念岬公園+南城市" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- ガンガラーの谷 -->
+    <div class="rec-card cat-nature">
+      <div class="rec-badge">要予約</div>
+      <div class="rec-cat">自然 ・ ガイドツアー</div>
+      <div class="rec-name">ガンガラーの谷</div>
+      <div class="rec-desc">数十万年前の鍾乳洞が崩壊してできた谷。専門ガイド同行のウォーキングツアー（約1時間20分）のみ入場可。唯一無二の体験。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://gangala.com/" target="_blank" rel="noopener">公式 ・ 予約</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=ガンガラーの谷+南城市玉城" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- おきなわワールド -->
+    <div class="rec-card cat-exp">
+      <div class="rec-cat">体験 ・ テーマパーク</div>
+      <div class="rec-name">おきなわワールド（玉泉洞）</div>
+      <div class="rec-desc">沖縄最大の鍾乳洞「玉泉洞」を中心にしたテーマパーク。エイサー演舞・琉球ガラス体験・ハブ博物公園も併設。ガンガラーの谷と同エリア。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://www.gyokusendo.co.jp/okinawaworld/" target="_blank" rel="noopener">公式サイト</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=おきなわワールド+南城市玉城" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 奥武島 -->
+    <div class="rec-card cat-food">
+      <div class="rec-cat">グルメ ・ 離島</div>
+      <div class="rec-name">奥武島の天ぷら</div>
+      <div class="rec-desc">橋でつながった小島。名物は島のてんぷら屋（中本鮮魚てんぷら店など）。地元民も通う素朴な味で、南部ドライブの昼食に最適。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://www.okinawaclip.com/post/okinawa_nanbu_course/" target="_blank" rel="noopener">観光情報</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=奥武島+南城市大里" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 平和祈念公園 -->
+    <div class="rec-card cat-history">
+      <div class="rec-cat">歴史 ・ 沖縄戦</div>
+      <div class="rec-name">平和祈念公園・平和の礎</div>
+      <div class="rec-desc">沖縄戦終焉の地・糸満市にある県営公園。敵味方問わず約24万人の戦没者名を刻んだ「平和の礎」。重いテーマだが訪れる価値がある。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://www.heiwa-irei-okinawa.jp/" target="_blank" rel="noopener">公式サイト</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=平和祈念公園+糸満市摩文仁" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- ひめゆり -->
+    <div class="rec-card cat-history">
+      <div class="rec-cat">歴史 ・ 資料館</div>
+      <div class="rec-name">ひめゆりの塔・資料館</div>
+      <div class="rec-desc">沖縄戦で動員された女学生たちの悲劇を伝える資料館。遺品・証言映像が展示され、深く刺さる体験。平和祈念公園と同日に立ち寄れる。</div>
+      <div class="rec-links">
+        <a class="btn-link" href="https://www.himeyuri.or.jp/" target="_blank" rel="noopener">公式サイト</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=ひめゆりの塔+糸満市伊原" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+  </div><!-- /rec-strip -->
+
+  <!-- その他スポット -->
+  <div class="sec-hd" style="margin-top:24px">
+    <h2>その他のスポット</h2>
+    <div class="sec-hd-note">気分・時間に余裕があれば</div>
+  </div>
+
+  <div class="spots-grid">
+
+    <!-- 百名ビーチ -->
+    <div class="spot-card cat-nature">
+      <div class="spot-cat">自然 ・ ビーチ</div>
+      <div class="spot-name">百名ビーチ（みーばるビーチ）</div>
+      <div class="spot-desc">南城市の穏やかな天然ビーチ。グラスボートで海中を覗けるアクティビティが通年楽しめる。</div>
+      <div class="spot-links">
+        <a class="btn-link" href="https://mibaru-beach.com/" target="_blank" rel="noopener">公式サイト</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=みーばるビーチ+南城市玉城百名" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 久高島 -->
+    <div class="spot-card cat-nature">
+      <div class="spot-cat">自然 ・ 離島</div>
+      <div class="spot-name">久高島（くだかじま）</div>
+      <div class="spot-desc">「神の島」。安座真港からフェリー約15分。琉球創世神話の舞台で静謐な空気が漂う。自転車で一周できる。半日あれば十分。</div>
+      <div class="spot-links">
+        <a class="btn-link" href="https://kudakajima.jp/" target="_blank" rel="noopener">観光情報</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=久高島+南城市知念" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 喜屋武岬 -->
+    <div class="spot-card cat-scenery">
+      <div class="spot-cat">絶景 ・ 岬</div>
+      <div class="spot-name">喜屋武岬</div>
+      <div class="spot-desc">本島最南端に近い断崖の岬。太平洋を望む絶景で人が少ない穴場。灯台と慰霊碑が建つ。</div>
+      <div class="spot-links">
+        <a class="btn-link" href="https://www.odnsym.com/spot/kyan.html" target="_blank" rel="noopener">情報</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=喜屋武岬+糸満市喜屋武" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 具志川城跡 -->
+    <div class="spot-card cat-history">
+      <div class="spot-cat">歴史 ・ 城跡</div>
+      <div class="spot-name">具志川城跡</div>
+      <div class="spot-desc">断崖に築かれた13〜15世紀の城跡。太平洋を一望する穴場スポット。喜屋武岬と同日にまとめて立ち寄れる。</div>
+      <div class="spot-links">
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=具志川城跡+糸満市喜屋武" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 琉球ガラス村 -->
+    <div class="spot-card cat-exp">
+      <div class="spot-cat">体験 ・ 工芸</div>
+      <div class="spot-name">琉球ガラス村</div>
+      <div class="spot-desc">沖縄最大のガラス工房。吹きガラス体験ができ、カラフルな琉球ガラスをお土産に購入することもできる。</div>
+      <div class="spot-links">
+        <a class="btn-link" href="https://www.ryukyu-glass.co.jp/" target="_blank" rel="noopener">公式サイト</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=琉球ガラス村+糸満市" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 道の駅 南城 -->
+    <div class="spot-card cat-food">
+      <div class="spot-cat">グルメ ・ 道の駅</div>
+      <div class="spot-name">道の駅 南城</div>
+      <div class="spot-desc">ニライカナイ橋のすぐそば。地元産農産物・加工品が揃い、駐車場からの海の眺めも良い。ドライブ中の休憩・軽食に。</div>
+      <div class="spot-links">
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=道の駅南城+南城市知念" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+    <!-- 瀬長島ウミカジテラス -->
+    <div class="spot-card cat-food">
+      <div class="spot-cat">グルメ ・ リゾート複合施設</div>
+      <div class="spot-name">瀬長島ウミカジテラス</div>
+      <div class="spot-desc">那覇空港から車15分。白を基調としたリゾートモールで、着陸する飛行機を間近に見ながら食事できる。最終日夕食の候補地。</div>
+      <div class="spot-links">
+        <a class="btn-link" href="https://umikajiterrace.com/" target="_blank" rel="noopener">公式サイト</a>
+        <a class="btn-link btn-map" href="https://maps.google.com/maps?q=瀬長島ウミカジテラス+豊見城市" target="_blank" rel="noopener">地図</a>
+      </div>
+    </div>
+
+  </div><!-- /spots-grid -->
+
+  <!-- MAP -->
+  <div class="sec-hd" style="margin-top:28px">
+    <h2>エリアマップ</h2>
+    <div class="sec-hd-note">南城市・糸満市・豊見城市 周辺</div>
+  </div>
+  <div class="map-wrap">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55800!2d127.79!3d26.08!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sja!2sjp!4v1720000000000"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="沖縄南部エリアマップ"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <div class="callout">
+    <strong>Day 2 の現実的なボリューム感：</strong>
+    ニライカナイ橋 → 斎場御嶽 → 奥武島（昼食）→ 知念岬 → ガンガラーの谷 or おきなわワールド のルートで概ね1日使い切れます。平和祈念公園・ひめゆりは糸満市方向なので、別ルートで半日かけて回るのがおすすめです。
+  </div>
+
+</div><!-- /main -->
+
+</body>
+</html>
