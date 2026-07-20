@@ -18,10 +18,10 @@ body{background:var(--bg);color:var(--text);
 a{color:inherit;text-decoration:none}
 
 /* HEADER */
-.header{background:var(--navy);color:#fff;padding:40px 24px 36px}
+.header{background:var(--navy);color:#fff;padding:20px 24px 16px}
 .header-inner{max-width:820px;margin:0 auto}
 .eyebrow{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#88BDD8;margin-bottom:10px}
-.h-title{font-family:Georgia,serif;font-size:clamp(24px,5vw,36px);font-weight:normal;line-height:1.2;text-wrap:balance;margin-bottom:20px}
+.h-title{font-family:Georgia,serif;font-size:clamp(17px,3.4vw,22px);font-weight:normal;line-height:1.25;text-wrap:balance;margin-bottom:0}
 .h-title em{font-style:normal;color:#6BBFDE}
 .flight-strip{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
 .fc{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:6px;padding:12px 16px;min-width:200px;flex:1}
@@ -47,8 +47,8 @@ a{color:inherit;text-decoration:none}
 .cost-sec{margin-top:22px}
 .cost-h{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .cost-sub{margin-left:auto;font-size:12px;font-weight:600;color:var(--ocean)}
-.cost-scroll{overflow-x:auto}
-.cost-table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--rule);border-radius:8px;overflow:hidden;font-size:13px}
+.cost-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cost-table{width:100%;min-width:640px;border-collapse:collapse;background:var(--card);border:1px solid var(--rule);border-radius:8px;overflow:hidden;font-size:13px}
 .cost-table th{text-align:left;font-size:11px;color:var(--muted);font-weight:600;background:#F7FBFD;padding:8px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
 .cost-table td{padding:9px 12px;border-bottom:1px solid #EEF4F8;vertical-align:top}
 .cost-table tr:last-child td{border-bottom:none}
@@ -177,12 +177,7 @@ a{color:inherit;text-decoration:none}
 <header class="header">
   <div class="header-inner">
     <div class="eyebrow">旅行プラン 2026年10月</div>
-    <h1 class="h-title">沖縄 6泊7日<br><em>海・自然・文化のゆったり旅</em></h1>
-    <div class="flight-strip">
-      <div class="fc"><div class="fc-label">往路</div><div class="fc-route">KIX → OKA</div><div class="fc-detail">10/12（月）09:30 → 11:50　ピーチ MM 213</div></div>
-      <div class="fc"><div class="fc-label">復路</div><div class="fc-route">OKA → HND</div><div class="fc-detail">10/18（日）08:55 → 11:20　スカイマーク BC 512</div></div>
-    </div>
-    <div class="stay-badge">2人旅 ・ レンタカーあり ・ 移動型（那覇→北部→那覇）・ 宿/レンタカー/ダイビング 予約確定</div>
+    <h1 class="h-title">沖縄 6泊7日</h1>
   </div>
 </header>
 
@@ -190,8 +185,8 @@ a{color:inherit;text-decoration:none}
 
 <div class="tabnav">
   <button class="tabbtn active" data-tab="plan">旅程</button>
-  <button class="tabbtn" data-tab="booking">予約マップ</button>
-  <button class="tabbtn" data-tab="cost">コスト試算</button>
+  <button class="tabbtn" data-tab="booking">予約</button>
+  <button class="tabbtn" data-tab="cost">コスト</button>
 </div>
 
 <div id="panel-plan" class="tabpanel active">
@@ -426,7 +421,6 @@ a{color:inherit;text-decoration:none}
 
 <div id="panel-cost" class="tabpanel">
 
-<div class="cost-intro">2名・6泊7日（10/12〜18）の費用内訳。宿泊・レンタカー・慶良間ダイビングは予約確定額を反映済み。航空券はGmailの予約メールから、高速・入場料は判明分を記載。食費は昼¥2,000・夕¥5,000/人で試算。宿泊・レンタカー・慶良間ダイビング・高速・入場料はすべて予約確定額です。単価・料金は変動する場合があるため、訪問前に最新情報をご確認ください。</div>
 <div class="cost-sec"><div class="cost-h">交通費<span class="cost-sub">確定 ¥84,900</span></div><div class="cost-scroll"><table class="cost-table"><tr><th>項目</th><th class="cost-num">単価</th><th class="cost-num">数量</th><th class="cost-num">小計（2名）</th><th>備考</th></tr><tr><td>往路 航空券（ピーチ MM213 / KIX→OKA）</td><td class="cost-num">¥14,940</td><td class="cost-num">2名分</td><td class="cost-num">¥29,880</td><td class="cost-note">予約番号 P44AXQ・スタンダード運賃</td></tr><tr><td>復路 航空券（スカイマーク SKY512 / OKA→HND）</td><td class="cost-num">¥15,890</td><td class="cost-num">2名分</td><td class="cost-num">¥31,780</td><td class="cost-note">予約番号 0826・いま得</td></tr><tr><td>高速道路（Day1 沖縄道 那覇IC→許田IC）</td><td class="cost-num">¥1,040</td><td class="cost-num">1回</td><td class="cost-num">¥1,040</td><td class="cost-note">ETC料金。現金は¥1,610</td></tr><tr><td>高速道路（Day4 うるま→那覇）</td><td class="cost-num">¥700</td><td class="cost-num">1回</td><td class="cost-num">¥700</td><td class="cost-note">ETC料金</td></tr><tr><td>レンタカー（10/12〜17）</td><td class="cost-num"></td><td class="cost-num">1台</td><td class="cost-num">¥21,500</td><td class="cost-note">コンパクト・免責補償・NOC込（OKINAWAヴァケーション 那覇空港店）</td></tr></table></div></div>
 <div class="cost-sec"><div class="cost-h">宿泊費（2名・全6泊）<span class="cost-sub">確定 ¥188,996</span></div><div class="cost-scroll"><table class="cost-table"><tr><th>項目</th><th class="cost-num">単価</th><th class="cost-num">数量</th><th class="cost-num">小計（2名）</th><th>備考</th></tr><tr><td>Day1 Bagus（古宇利島・1棟貸し）</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥32,000</td><td class="cost-note">大人2名・Booking.com</td></tr><tr><td>Day2 ホテル日航アリビラ（読谷）</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥49,320</td><td class="cost-note">夕朝食付・One Harmony10%OFF適用後</td></tr><tr><td>Day3 ラ・ジェント沖縄北谷</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥16,884</td><td class="cost-note">大人2名</td></tr><tr><td>Day4 アベスト那覇国際通り</td><td class="cost-num"></td><td class="cost-num">1泊</td><td class="cost-num">¥15,552</td><td class="cost-note">大人2名</td></tr><tr><td>Day5〜6 琉球温泉 瀬長島ホテル</td><td class="cost-num"></td><td class="cost-num">2泊</td><td class="cost-num">¥75,240</td><td class="cost-note">素泊（早割75）・クーポン適用後</td></tr></table></div></div>
 <div class="cost-sec"><div class="cost-h">観光・入場料<span class="cost-sub">確定分 ¥15,960</span></div><div class="cost-scroll"><table class="cost-table"><tr><th>項目</th><th class="cost-num">単価</th><th class="cost-num">数量</th><th class="cost-num">小計（2名）</th><th>備考</th></tr><tr><td>首里城公園（有料区域）</td><td class="cost-num">¥400</td><td class="cost-num">×2名</td><td class="cost-num">¥800</td><td class="cost-note"></td></tr><tr><td>沖縄美ら海水族館</td><td class="cost-num">¥2,180</td><td class="cost-num">×2名</td><td class="cost-num">¥4,360</td><td class="cost-note">最新料金は要確認</td></tr><tr><td>斎場御嶽</td><td class="cost-num">¥300</td><td class="cost-num">×2名</td><td class="cost-num">¥600</td><td class="cost-note"></td></tr><tr><td>ガンガラーの谷 ガイドツアー</td><td class="cost-num">¥2,500</td><td class="cost-num">×2名</td><td class="cost-num">¥5,000</td><td class="cost-note">要事前予約・1ドリンク付</td></tr><tr><td>勝連城跡（あまわりパーク）</td><td class="cost-num">¥600</td><td class="cost-num">×2名</td><td class="cost-num">¥1,200</td><td class="cost-note"></td></tr><tr><td>琉球村</td><td class="cost-num">¥2,000</td><td class="cost-num">×2名</td><td class="cost-num">¥4,000</td><td class="cost-note">最新料金は要確認</td></tr></table></div></div>
@@ -444,16 +438,31 @@ a{color:inherit;text-decoration:none}
 
 </div>
 <script>
-document.querySelectorAll('.tabbtn').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    var t = btn.getAttribute('data-tab');
-    document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('active', b===btn);});
-    document.querySelectorAll('.tabpanel').forEach(function(p){
-      p.classList.toggle('active', p.id === 'panel-'+t);
-    });
+(function(){
+  var tabs=['plan','booking','cost'];
+  function activate(t){
+    document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-tab')===t);});
+    document.querySelectorAll('.tabpanel').forEach(function(p){p.classList.toggle('active', p.id==='panel-'+t);});
     window.scrollTo(0,0);
+  }
+  document.querySelectorAll('.tabbtn').forEach(function(btn){
+    btn.addEventListener('click',function(){activate(btn.getAttribute('data-tab'));});
   });
-});
+  function currentIndex(){var a=document.querySelector('.tabbtn.active');return a?tabs.indexOf(a.getAttribute('data-tab')):0;}
+  var x0=null,y0=null,main=document.querySelector('.main');
+  main.addEventListener('touchstart',function(e){
+    if(e.target.closest('.meal-cards,.cost-scroll,.map-wrap')){x0=null;return;}
+    var t=e.touches[0];x0=t.clientX;y0=t.clientY;
+  },{passive:true});
+  main.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var t=e.changedTouches[0],dx=t.clientX-x0,dy=t.clientY-y0;x0=null;
+    if(Math.abs(dx)<60||Math.abs(dx)<Math.abs(dy)*1.5)return;
+    var i=currentIndex();
+    if(dx<0&&i<tabs.length-1)activate(tabs[i+1]);
+    else if(dx>0&&i>0)activate(tabs[i-1]);
+  },{passive:true});
+})();
 </script>
 </body>
 </html>
