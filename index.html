@@ -14,7 +14,7 @@
 }
 body{background:var(--bg);color:var(--text);
   font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","YuGothic",system-ui,sans-serif;
-  font-size:15px;line-height:1.7;padding:0 0 80px}
+  font-size:15px;line-height:1.7;padding:0 0 80px;overflow-x:clip}
 a{color:inherit;text-decoration:none}
 
 /* HEADER */
@@ -41,6 +41,10 @@ a{color:inherit;text-decoration:none}
 .tabbtn.active{color:var(--ocean);border-bottom-color:var(--ocean)}
 .tabpanel{display:none}
 .tabpanel.active{display:block}
+.tabpanel.anim-fwd{animation:tabFwd .26s ease}
+.tabpanel.anim-back{animation:tabBack .26s ease}
+@keyframes tabFwd{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@keyframes tabBack{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
 
 /* COST TABLE */
 .cost-intro{font-size:13px;color:var(--muted);line-height:1.7;margin-top:14px}
@@ -169,7 +173,7 @@ a{color:inherit;text-decoration:none}
   .ov-grid{grid-template-columns:repeat(2,1fr)}
   .sc-img,.sc-placeholder{height:140px}
 }
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
@@ -440,15 +444,21 @@ a{color:inherit;text-decoration:none}
 <script>
 (function(){
   var tabs=['plan','booking','cost'];
+  function currentIndex(){var a=document.querySelector('.tabbtn.active');return a?tabs.indexOf(a.getAttribute('data-tab')):0;}
   function activate(t){
+    var from=currentIndex(), to=tabs.indexOf(t);
+    var dir = to>from ? 'anim-fwd' : (to<from ? 'anim-back' : '');
     document.querySelectorAll('.tabbtn').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-tab')===t);});
-    document.querySelectorAll('.tabpanel').forEach(function(p){p.classList.toggle('active', p.id==='panel-'+t);});
+    document.querySelectorAll('.tabpanel').forEach(function(p){
+      var on=p.id==='panel-'+t;
+      p.classList.toggle('active', on);
+      if(on){ p.classList.remove('anim-fwd','anim-back'); if(dir){ void p.offsetWidth; p.classList.add(dir); } }
+    });
     window.scrollTo(0,0);
   }
   document.querySelectorAll('.tabbtn').forEach(function(btn){
     btn.addEventListener('click',function(){activate(btn.getAttribute('data-tab'));});
   });
-  function currentIndex(){var a=document.querySelector('.tabbtn.active');return a?tabs.indexOf(a.getAttribute('data-tab')):0;}
   var x0=null,y0=null,main=document.querySelector('.main');
   main.addEventListener('touchstart',function(e){
     if(e.target.closest('.meal-cards,.cost-scroll,.map-wrap')){x0=null;return;}
